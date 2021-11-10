@@ -33,8 +33,8 @@ String initialStrings[] = {"name1", "name2"};
 
 	private List<Integer> getInitialNumbers() {
 		
-		//List<Integer> res = new ArrayList<>(1);
-		List<Integer> res = new LinkedList<>();
+		List<Integer> res = new ArrayList<>(1);
+		//List<Integer> res = new LinkedList<>();
 		for (int num: initialNumbers) {
 			res.add(num);
 		}
@@ -270,6 +270,7 @@ String initialStrings[] = {"name1", "name2"};
 		assertEquals(-1, list.indexOf(divider4Predicate));
 		
 	}
+	/*
 	@Test
 	void removeByIteratorTest() {
 		//TODO test for checking method remove of ArrayListIterator
@@ -288,7 +289,19 @@ String initialStrings[] = {"name1", "name2"};
 		itr1.remove();		
 		assertArrayEquals(expected1, getArrayFromList(numbers));
 	}
+	*/
 
+	@Test
+	void removeAllByIterator() {
+		Iterator<Integer> itr = numbers.iterator();
+		while(itr.hasNext()) {
+			Integer val = itr.next();
+			itr.remove();
+		}
+		Integer exp[] = new Integer[0];
+		assertArrayEquals(exp, getArrayFromList(numbers));
+		
+	}
 	private void fillListPerformance(List<Integer> list) {
 		for (int i = 0; i < N_NUMBERS_PERFORMANCE ; i++) {
 			list.add((int)(Math.random() * Integer.MAX_VALUE));
